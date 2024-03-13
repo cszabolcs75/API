@@ -23,6 +23,7 @@ namespace API.Extensions
             services.AddSingleton<IConnectionMultiplexer>(c =>
             {
                 var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
+                options.AbortOnConnectFail = false;
                 return ConnectionMultiplexer.Connect(options);
             });
             services.AddScoped<IBasketRepository, BasketRepository>();
