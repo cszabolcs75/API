@@ -26,6 +26,7 @@ namespace API.Extensions
                 options.AbortOnConnectFail = false;
                 return ConnectionMultiplexer.Connect(options);
             });
+            services.AddSingleton<IResponseCacheService, ResponseCacheService>();
             services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ITokenService, TokenService>();
